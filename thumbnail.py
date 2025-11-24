@@ -266,6 +266,10 @@ class Neptune_Thumbnail:
             return img;
 
         img_size = img.size()
+
+        if img_size.width() <= 50:
+            return img;
+
         self.log_debug(f'Adding texts to image {img_size.width()}x{img_size.height()}')
 
         font_size = int(img_size.height() / 14);
