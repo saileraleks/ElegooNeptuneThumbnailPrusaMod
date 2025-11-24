@@ -136,7 +136,7 @@ Tested with PrusaSlicer 2.6.1/2.7.0, OrcaSlicer 1.8.0/1.8.1/1.9.0/1.9.1/2.0.0/2.
 - `--no-modify_slicer_header`
   Original slicer header will not be modified. This option should only be used if your printer firmware displays thumbnail without Cura mentioned in gcode.
 -  `--mks_fix`
-  This option allows to avoid color distortion of thumbnails on some MKS firmware.
+  This option allows to avoid color distortion of thumbnails on some MKS firmwares.
 
 To add script's command line option in PrusaSlicer/OrcaSlicer, make sure you wrap them in double quotes:
 `"C:\ElegooNeptuneThumbnailPrusaMod\thumbnail.exe" "--image_size" "300x300";`

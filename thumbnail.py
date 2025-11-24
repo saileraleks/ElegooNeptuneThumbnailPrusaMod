@@ -394,7 +394,13 @@ class Neptune_Thumbnail:
                 r = pixel_color.red() >> 3
                 g = pixel_color.green() >> 2
                 b = pixel_color.blue() >> 3
+                if self.run_mks_fix:
+                    r = min(31, int(r * 1.25))  
+                    b = max(0,  int(b * 0.75))  
+                    g = min(63, int(g * 0.92))  
                 rgb = (r << 11) | (g << 5) | b
+                if rgb == 0 and pixel_color.alpha() > 50:
+                    rgb = 0x821
                 str_hex = '%x' % rgb
                 match len(str_hex):
                     case 3:
