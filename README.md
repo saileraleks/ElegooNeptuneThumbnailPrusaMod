@@ -122,7 +122,7 @@ Tested with PrusaSlicer 2.6.1/2.7.0, OrcaSlicer 1.8.0/1.8.1/1.9.0/1.9.1/2.0.0/2.
 - `--update_original_image`
   Original image (that is used by Klipper) is also modified with text info. So you will see the modified image in fluidd.
 - `--original_image_light_theme`
-  Original image will be adjusted for light Klipper's theme. Use this option if you use light fluidd theme (without the option it is adjusted for dark fluidd theme -- default Klipper theme)
+  Original image will be adjusted for light Klipper's theme. Use this option if you use light fluidd theme (without the option it is adjusted for dark fluidd theme -- default Klipper theme), also works with `--old_printer`
 - `--debug`
   Write debug information into `thumbnail.log` and save resized images in program folder. I will ask you to run with the option and supply log in case you face any issues.
 - `--old_printer`
@@ -131,25 +131,20 @@ Tested with PrusaSlicer 2.6.1/2.7.0, OrcaSlicer 1.8.0/1.8.1/1.9.0/1.9.1/2.0.0/2.
   Without this option the first thumbnail that is bigger than 100x100px from g-code file will be used.
   If specified, the script will try to find in g-code thumbnail with the specified size. It will report error if such thumbnail is not found. So I'd recommend not to use the option at all and only specify size 300x300 in 'Printer Settings'.
 - `--images WxH/gimage,WxH/simage`
-  Images to be generated in specified order. The option does not work with option `--old_printer`.
+  Images to be generated in specified order.
   Default: `200x200/gimage,160x160/simage`
 - `--no-modify_slicer_header`
   Original slicer header will not be modified. This option should only be used if your printer firmware displays thumbnail without Cura mentioned in gcode.
+  `--mks_fix`
+  This option allows to avoid color distortion of thumbnails on some MKS firmware.
 
 To add script's command line option in PrusaSlicer/OrcaSlicer, make sure you wrap them in double quotes:
 `"C:\ElegooNeptuneThumbnailPrusaMod\thumbnail.exe" "--image_size" "300x300";`
 
-
-## Author
-
-fifonik
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/fifonik)
-
-
 ## Contribution
 
 This repository is based on:
+- [fifonik/ElegooNeptuneThumbnailPrusaMod](https://github.com/fifonik/ElegooNeptuneThumbnailPrusaMod)
 - [TheJMaster28/ElegooNeptuneThumbnailPrusa](https://github.com/TheJMaster28/ElegooNeptuneThumbnailPrusa)
 - [Molodos/ElegooNeptuneThumbnails-Prusa](https://github.com/Molodos/ElegooNeptuneThumbnails-Prusa)
 - [sigathi/ElegooN3Thumbnail](https://github.com/sigathi/ElegooN3Thumbnail)
