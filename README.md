@@ -1,41 +1,33 @@
-# Yet another PrusaSlicer/OrcaSlicer thumbnail script for Elegoo Neptune
+# Yet another PrusaSlicer/OrcaSlicer thumbnail script for old printers
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-This package converts the thumbnail that PrusaSlicer/OrcaSlicer bakes into the g-code file into the format that is read by the Neptune printers.
+This fork expands support for old printers that expect thumbnails in raw RGB565 format using the classic `simage` / `gimage` + `M10086` workflow.
 
-Modified image example:
+Originally made for my **Flying Bear Ghost 5**, but I think works on any printer with MKS Robin Nano (V1.x – V3.x), old Elegoo Neptune series, some Anycubic models, etc.
 
-<img src="images/screenshot.png" />
+Image example:
 
-Photos of Neptune 4 screen (left -- from PrusaSlicer, right -- from OrcaSlicer):
-<p float="left">
-  <img src="images/ScreenshotPrusaSlicer1.jpg" width="300" />
-  <img src="images/ScreenshotOrcaSlicer1.jpg" width="300" />
-</p>
+<img src="images/FBG5.jpg" />
 
-Example of modified image in Klipper UI (light theme):
-
-<img src="images/klipper.png" />
+### Example command used for the screenshot above
+"C:\OrcaScripts\thumbnail.exe" "--old_printer"  "--images" "50x50/simage,200x200/gimage" "--mks_fix" "--original_image_light_theme" "--short_duration_format" 
 
 
-## Why another mod?
+### Differences from the original project
+- Arbitrary thumbnail sizes for old printers (not limited to 100×100 / 200×200)
+- Light theme compatibility for old-printer thumbnails
+- Transparent black (0x0000) is replaced with dark gray (0x0821) – letters no longer have holes
+- Improved RGB565 color handling (I hope so)
+- Fixed color shift on certain MKS Robin Nano firmwares
+- No “duration / filament” text overlay on very small images (≤ 50 px width)
 
-I was not happy with previous implementations so tried to make it better. But ended up re-writing it :-)
-
-Notable changes:
-- Faster: it does not read all file content into memory, which is vital for big g-code files;
-- Easier installation: image size should only be specified in slicer's printer settings and the script accepts PNG and JPG;
-- More information on thumbnail: print duration, used filament weight, used filament length, model height and filament cost can be added to image and you can specify what should be specified in each corner;
-- Better texts quality: texts added after image resizing, font size and texts positions adjusted automatically;
-- Adjust g-code so completed percentage and remaining time are displayed correctly under the thumbnail (you need to tick "Support remaining times" checkbox in Printer Settings);
-- Adjust original image that is displayed in Klipper UI (light and dark themes both supported);
-- Supports PrusaSlicer and OrcaSlicer.
+Huge thanks to everyone who worked on the original project.
 
 
 ## Installation
 
-- Download the [latest release](https://github.com/fifonik/ElegooNeptuneThumbnailPrusaMod/releases);
+- Download the [latest release](https://github.com/saileraleks/ElegooNeptuneThumbnailPrusaMod);
 - Unzip the executable and put it to desired location.
 
 
@@ -85,26 +77,7 @@ If you do not want to run the supplied executable (as myself), you can always ru
 
 ## Compatibility
 
-Works with these printers:
-
-- NEPTUNE 3 PRO
-- NEPTUNE 3 PLUS
-- NEPTUNE 3 MAX
-- NEPTUNE 4
-- NEPTUNE 4 PRO
-- NEPTUNE 4 PLUS
-- NEPTUNE 4 MAX
-
-Use the `--old_printer` argument for these printers:
-
-- NEPTUNE 2
-- NEPTUNE 2D
-- NEPTUNE 2S
-- NEPTUNE X
-
-
-Tested with PrusaSlicer 2.6.1/2.7.0, OrcaSlicer 1.8.0/1.8.1/1.9.0/1.9.1/2.0.0/2.1.0/2.2.0 on Neptune 4.
-
+Tested with OrcaSlicer 2.3.1 on Flying Bear Ghost 5.
 
 
 ## Supported command line parameters
